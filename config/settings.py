@@ -41,13 +41,31 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+
+    #3rd party
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'allauth',
+    'allauth.account',
 
     #Local
     'accounts.apps.AccountsConfig',
     'frontend.apps.FrontendConfig',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,7 +160,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
+AUTH_USER_MODEL = 'accounts.User'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -154,11 +172,7 @@ STATICFILES_DIRS = (
 
 REACT_APP_DIR = os.path.join(BASE_DIR, 'frontend/static')
 
-# #Django REST Framework permissions
-#
-#
-# REST_FRAMEWORK = {
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.AllowAny',
-#     ]
-# }
+SITE_ID = 1;
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

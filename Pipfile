@@ -11,6 +11,9 @@ gunicorn = "~=20.0.4"
 whitenoise = "~=5.2.0"
 dj-database-url = "~=0.5.0"
 psycopg2-binary = "~=2.8.6"
+djangorestframework = "~=3.12.1"
+django-rest-auth = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.8"
