@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     #Local
     'accounts.apps.AccountsConfig',
     'frontend.apps.FrontendConfig',
+    'api.apps.ApiConfig',
+    'chats.apps.ChatsConfig',
 ]
 
 REST_FRAMEWORK = {
