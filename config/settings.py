@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 
     #Local
     'accounts.apps.AccountsConfig',
