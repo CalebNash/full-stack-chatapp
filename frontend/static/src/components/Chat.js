@@ -15,6 +15,7 @@ class Chat extends React.Component{
       messages: [],
       message: '',
       user: '',
+      interval: 0,
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -24,7 +25,13 @@ class Chat extends React.Component{
 
   componentDidMount(){
     this.fetchMessages();
-    setInterval(this.fetchMessages, 2000);
+     const interval = setInterval(this.fetchMessages, 2000);
+     this.setState({interval})
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   fetchMessages(){
@@ -66,7 +73,7 @@ class Chat extends React.Component{
     return(
       <div>
       <h1>Messages</h1>
-      <button type="submit" className="btn btn-primary" onClick={() => this.props.handleLogout}>Logout</button>
+      <button type="button" className="btn btn-primary" onClick={this.props.handleLogout}>Logout</button>
         <form className="col-12" onSubmit={(event) => this.handlePost(event, this.state.message, this.state.user)}>
           <div className="form-group">
             <label htmlFor="title">New Message</label>

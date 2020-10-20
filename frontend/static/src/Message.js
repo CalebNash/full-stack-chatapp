@@ -35,7 +35,7 @@ class Message extends React.Component{
 
     if(data.key){
       Cookies.set('Authorization', `Token ${data.key}`)
-      this.setState({page: 'login'});
+      this.setState({page: 'chats'});
     }
 
   }
